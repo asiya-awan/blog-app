@@ -10,6 +10,7 @@ export const BlogListItem =
     <Link className="list-item" to = {`/edit/${id}`} >
         <div>
             <h3 className="list-item__title">{title}</h3>
+            <p>{description}</p>
             <span className="list-item__subtitle" > {moment(createdAt).format('MMM Do, YYYY')}</span>
         </div>     
     </Link>    

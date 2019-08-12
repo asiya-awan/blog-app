@@ -2,7 +2,7 @@ import uuid from 'uuid';
 import database from '../firebase/firebase';
 
 //ADD_Blog> Action Creator
-export const addBlog= (Blog) => ({
+export const addBlog= (blog) => ({
     type:'ADD_BLOG',
     blog
 });
@@ -16,10 +16,10 @@ export const startAddBlog= (blogData = {}) => {
             createdAt = 0
         } = blogData;
 
-        const Blog= {title, description,createdAt};
+        const blog = {title, description,createdAt};
 
        return database.ref(`users/${uid}/blogs`).push(blog).then((ref)=> {
-            dispatch(addBlogs({
+            dispatch(addBlog({
                 id: ref.key,
                 ...blog
                     }));
@@ -73,7 +73,7 @@ export const setBlogs = (blogs) => ({
 export const startSetBlogs= () => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
-        const Blogs = [];     
+        const blogs = [];     
         return database.ref(`users/${uid}/blogs`).once('value').then((snapshot) => {
             snapshot.forEach((childSnapshot) => {
             

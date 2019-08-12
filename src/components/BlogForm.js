@@ -19,8 +19,8 @@ export default class BlogForm extends React.Component {
     this.setState(() => ({ description }));
   };
   onTitleChange = (e) => {
-    const note = e.target.value;
-    this.setState(() => ({ note }));
+    const title = e.target.value;
+    this.setState(() => ({ title }));
   };
   onAmountChange = (e) => {
     const amount = e.target.value;
@@ -45,10 +45,10 @@ export default class BlogForm extends React.Component {
     } else {
       this.setState(() => ({ error: '' }));
       this.props.onSubmit({
-        description: this.state.description,
-
+        title: this.state.title,
         createdAt: this.state.createdAt.valueOf(),
-        title: this.state.title
+        description: this.state.description
+
       });
     }
   };
