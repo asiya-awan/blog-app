@@ -51,6 +51,7 @@ export const editBlog= (id, updates) => ({
   });
   
   export const startEditBlog = (id, updates) => {
+      
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
       return database.ref(`users/${uid}/blogs/${id}`).update(updates).then(() => {
@@ -81,6 +82,7 @@ export const startSetBlogs= () => {
                     id: childSnapshot.key,
                     ...childSnapshot.val()         
                 });
+                // console.log(blogs);
             });  
             dispatch(setBlogs(blogs));
         });    

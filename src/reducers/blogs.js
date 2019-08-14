@@ -17,7 +17,7 @@ export  default (state = blogsReducerDefaultState, action) => {
                     return blog;
             });
                 
-        case 'SET_BLOG': 
+        case 'SET_BLOGS': 
             return action.blogs;
 
         default:
